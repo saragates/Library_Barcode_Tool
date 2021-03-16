@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Barcode2 Input Form</title>
+    <meta name="author" content="Mark Luker">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+    <main class="main">
+        <div class="callnumber-search shadow">
+            <label for="callnum">Enter call number:</label>
+            <div class="callnumber-search-form">
+                <input type="search" id="callnum" form="callnumber_search" autofocus>
+                <a class="srchBtn search-submit-link" id="SearchBtn" href="javascript:void(0);">Search</a>
+            </div>
+        </div>
+        <!-- input form appears if call number found, error message if not found -->
+        <div id="results" class="results">
+            <div id="loading" style="padding-top: 50px; width: 100px; margin: 0 auto;">
+                SEARCHING
+                <div style="color: #64d6e2" class="la-line-scale la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div id="processing" style="padding-top: 50px; width: 100px; margin: 0 auto;">
+                PROCESSING
+                <div style="color: #64d6e2" class="la-line-scale la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div id="done" class="dialog shadow">
+                <p>Barcode update complete</p>
+                <input id="doneBtn" type="button" value="OK" class="btn">
+            </div>
+            <p class="message">Call number not found.</p>
+            <form id="input-form" class="input-form shadow">
+                <h3 id="title"></h3>
+                <div class="row" style="font-weight: 600;">
+                    <div class="col">Call Number</div>
+                    <div class="col">Description</div>
+                    <div class="col">Old Bar Code</div>
+                    <div class="col">New Bar Code</div>
+                </div>
+                <div id="items"></div>
+                <p style="padding-top:20px; text-align: center;">
+                    <input id="submitBtn" type="button" value="Submit Edits" class="btn">
+                    <input id="resetBtn" type="button" value="Reset Form" class="btn">
+				</p>
+            </form>
+        </div>
+    </main>
+<script src={{ url_for('static', filename="js/jquery.js") }}></script>
+<script src={{ url_for('static', filename="js/barcode.js") }}></script>
+<script>
+    Barcode.init();
+</script>
+</body>
